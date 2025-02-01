@@ -1,9 +1,9 @@
-import { merge } from "webpack-merge";
-import common from "./webpack.common.js";
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-export default merge(common, {
-  mode: "production",
+module.exports = merge(common, {
+  mode: 'production',
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
   },

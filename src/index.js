@@ -4,10 +4,12 @@ import goblinImage from './goblin.png';
 const gridSize = 4;
 const field = document.getElementById('field');
 
-for (let i = 0; i < gridSize * gridSize; i++) {
-  const cell = document.createElement('div');
-  cell.classList.add('cell');
-  field.appendChild(cell);
+function createGrid() {
+  for (let i = 0; i < gridSize * gridSize; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    field.appendChild(cell);
+  }
 }
 
 const goblin = document.createElement('img');
@@ -30,7 +32,9 @@ function moveGoblin() {
   cells[newPosition].appendChild(goblin);
 }
 
-const initialPosition = getRandomPosition();
-field.children[initialPosition].appendChild(goblin);
-
-setInterval(moveGoblin, 1000);
+if (field) {
+  createGrid();
+  const initialPosition = getRandomPosition();
+  field.children[initialPosition].appendChild(goblin);
+  setInterval(moveGoblin, 1000);
+}
