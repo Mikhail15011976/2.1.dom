@@ -43,10 +43,13 @@ describe('Goblin Game', () => {
     const initialCell = Array.from(document.querySelectorAll('.cell')).find(cell => cell.contains(goblin));
     
     const moveGoblin = () => {
-      const cells = document.querySelectorAll('.cell');
-      const newPosition = Math.floor(Math.random() * cells.length);
-      cells[newPosition].appendChild(goblin);
-    };
+        const cells = document.querySelectorAll('.cell');
+        let newPosition;
+        do {
+          newPosition = Math.floor(Math.random() * cells.length);
+        } while (cells[newPosition] === initialCell); // Убедитесь, что новая позиция не совпадает с начальной
+        cells[newPosition].appendChild(goblin);
+      };
 
     moveGoblin();
 
